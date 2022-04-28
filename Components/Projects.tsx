@@ -17,7 +17,7 @@ export default function Projects(){
                     img= {require('../images/NFTicket.png')}
                     url= 'https://nftickets.netlify.app/'
                     tech={['Solidity', 'Web3', 'Next', 'Typescript', 'Prisma', 'Chakra-UI']}
-                    linkedin= 'https://www.linkedin.com/feed/update/urn:li:activity:6924699098465902592/?commentUrn=urn%3Ali%3Acomment%3A(ugcPost%3A6924698331977818112%2C6924795654066114560)'
+                    linkedin= 'https://www.linkedin.com/feed/update/urn:li:activity:6925467693730934786/'
                 />  
             </div>
         </div>

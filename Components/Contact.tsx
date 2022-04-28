@@ -21,6 +21,7 @@ export default function Contact(){
                 <a href={'https://github.com/AlfredoBlanco'} target='_blank' rel="noopener noreferrer">
                     <Cards Icon = {FiGithub} name={'AlfredoBlanco'}/>
                 </a>
+                
 
             </div>
         </div>
