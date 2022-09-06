@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css';
 export default function Present(){
     return (
         <div className={`${styles.main} ${styles.present}`} id='Presentation'>
-            <h1>Hi, my name is Alfredo Blanco.</h1>
+            <h1>Hi, my name is Alfredo Bco.</h1>
             
             <p>
                 {"I'm"} a passionate Argentinian developer who wants to keep learning new things every day.<br />
