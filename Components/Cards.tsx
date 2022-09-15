@@ -30,22 +30,27 @@ export default function Card({Icon, name, copy, download} : Props){
             setDownloaded(false);
         }, 3000);
     }
+    /*   
+         */
     return (
-        <div className={styles.card}>
-            <Icon size={60} />
-            <div className={styles.lilCard}>
+        <div className='w-[200px] h-max flex-none inline-block '>
+            <div className='flex flex-col items-center justify-center p-4 m-2
+                rounded-md border border-cyan-700 hover:text-cyan-600'>
+                <Icon size={60} />
+                <div className='flex items-center justify-center h-full w-full overflow-hidden pt-2'>
+                    <p className='font-medium'>{name}</p>
+                    {
+                        copy
+                        ? (<CopyToClipboard text={name} onCopy={() => console.log('CopiadoSup')}>
+                        <button onClick={() => handleClick()}>
+                            {copied? <GiConfirmed /> : <AiOutlineCopy />}
+                        </button>
+                        </CopyToClipboard>) : ''
+                    }
 
-            {
-                copy
-                ? (<CopyToClipboard text={name} onCopy={() => console.log('CopiadoSup')}>
-                <button onClick={() => handleClick()}>
-                    {copied? <GiConfirmed /> : <AiOutlineCopy />}
-                </button>
-                </CopyToClipboard>) : ''
-            }
-            <span>{name}</span>
+                </div>
+                
             </div>
-            
         </div>
     )
 }

@@ -1,23 +1,24 @@
 import { useEffect, useState } from 'react';
 
+import { useEnglish } from '../context/englishContext';
+
 
 export default function Present(){
-    const [english, setEnglish] = useState(false);
     const [show, setShow] = useState(false);
+    const { english } = useEnglish();
 
-    /* useEffect(() => {
+    useEffect(() => {
         setTimeout(() => {
             setShow(!show);
         }, 3000)
-    }, [show]); */
+    }, [show]);
 
     return (
         <div className='flex flex-col items-center justify-between h-screen w-screen md:w-[90%] text-gray-50 bg-zinc-900 ' id='About'>
-            <button className='absolute top-10 right-5 bg-black w-max h-max p-4 text-white'
-            onClick={() => setEnglish(!english)} >X</button>
+            
             <div className='flex flex-col justify-center items-center bg-zinc-700 h-2/5 xs:h-1/3 w-full'>
                 
-                <h1 className='text-5xl font-bold text-center pt-4 xs:py-2' >
+                <h1 className='text-5xl font-bold text-center pt-4 xs:pt-4' >
                     {
                         english
                         ? 'Hi, I am'

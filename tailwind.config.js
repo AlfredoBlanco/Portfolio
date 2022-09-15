@@ -8,9 +8,12 @@ module.exports = {
     extend: {
       screens : {
         'xs' : '300px',
+        'xsm' : '500px',
         'xlg' : '900px'
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar-hide')
+  ],
 }
