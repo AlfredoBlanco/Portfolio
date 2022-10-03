@@ -1,8 +1,33 @@
+import { useState } from 'react';
 import { useEnglish } from '../context/englishContext';
 import Card from './ProjectCard';
 
+
 export default function Projects(){
     const { english } = useEnglish();
+    const [ projects ] = useState<string[]>([
+        'NFTicket',
+        'piDogs'
+    ])
+    const [pos, setPos] = useState<number>(0);
+
+    const goRight = () => {
+        if(pos < projects.length -1){
+            setPos(pos + 1);
+
+        } else {
+            setPos(0);
+        }
+    }
+    const goLeft = () => {
+        if(pos === 0){
+            setPos(projects.length -1);
+
+        } else {
+            setPos(pos - 1);
+        }
+    }
+    
     return (
         <div className='flex flex-col items-center justify-between 
             min-h-screen w-screen md:w-[90%] bg-slate-200 border-t-2 border-sky-700' id='Projects'>
@@ -16,7 +41,17 @@ export default function Projects(){
                     }
                 </h1>
             </div>
-            <div className=''>
+            <div className='flex w-[90%] justify-between'>
+                <button onClick={goLeft}>{'<'}</button>
+                <Card url={projects[pos]} />
+                <button onClick={goRight}>{'>'}</button>
+            </div>
+           
+
+        </div>
+    )
+} 
+{/* <div className=''>
                 <Card name='PI-Dogs'
                     img= {require('../images/piDogs.png')}
                     url= 'https://pi-dogs-beryl.vercel.app/'
@@ -30,7 +65,4 @@ export default function Projects(){
                     tech={['Solidity', 'Web3', 'Next', 'Typescript', 'Prisma', 'Chakra-UI']}
                     linkedin= 'https://www.linkedin.com/feed/update/urn:li:activity:6925467693730934786/'
                 />  
-            </div>
-        </div>
-    )
-}
+            </div> */}

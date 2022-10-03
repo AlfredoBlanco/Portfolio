@@ -1,4 +1,3 @@
-import fileDownload from 'js-file-download';
 import { useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { IconType } from 'react-icons';
