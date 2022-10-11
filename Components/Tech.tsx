@@ -4,9 +4,11 @@ import { SiSolidity, SiNextdotjs, SiRedux, SiExpress, SiPostgresql,
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import { BsThreeDots } from 'react-icons/bs';
 import Cards from './Cards';
+import AutoSlider from './AutoSlider';
 import { useEnglish } from '../context/englishContext';
 import { useState } from 'react';
 import { IconType } from 'react-icons/lib';
+import ManualSlider from './ManualSlider';
 
 interface TechCard {
     Icon : IconType,
@@ -38,30 +40,6 @@ export default function Tech(){
     const sliderClass = 'w-full h-max overflow-x-scroll overflow-y-hidden scroll whitespace-nowrap scroll-smooth transition duration-1000 scrollbar-hide';
     const arrowClass = 'hidden xsm:block cursor-pointer';
 
-    const slideFirstLeft = () => {
-        const slider = document.getElementById('slide1');
-        slider ? slider.scrollLeft -= 200 : '';
-    }
-
-    const slideFirstRight = () => {
-        const slider = document.getElementById('slide1');
-        if(slider){
-            slider.scrollLeft += 200;
-        }
-    }
-
-    const slideSecondLeft = () => {
-        const slider = document.getElementById('slide2');
-        slider ? slider.scrollLeft -= 200 : '';
-    }
-
-    const slideSecondRight = () => {
-        const slider = document.getElementById('slide2');
-        if(slider){
-            slider.scrollLeft += 200;
-        }
-    }
-
     const slideLearningLeft = () => {
         const slider = document.getElementById('learningSlide');
         slider ? slider.scrollLeft -= 400 : '';
@@ -82,66 +60,13 @@ export default function Tech(){
             </h1>
 
             {/* Manual slides */}
-            <div className='relative flex items-center w-full block xl:hidden px-2 transition duration-700'>
-                <MdChevronLeft size={40} onClick={slideFirstLeft} className={arrowClass} />
-                <div id='slide1' className={sliderClass}>
-                    {
-                        techs1.map((e : TechCard) => (
-                            <Cards key={e.name} Icon={e.Icon} name={e.name} />
-                            ))
-                        }
-                </div>
-                <MdChevronRight size={40} onClick={slideFirstRight} className={arrowClass} />
-            </div>
-            <div className='relative flex items-center w-full block xl:hidden px-2 transition duration-700'>
-                <MdChevronLeft size={40} onClick={slideSecondLeft} className={arrowClass} />
-                <div id='slide2' className={sliderClass}>
-                    {
-                        techs2.map((e : TechCard) => (
-                            <Cards key={e.name} Icon={e.Icon} name={e.name} />
-                            ))
-                        }
-                </div>
-                <MdChevronRight size={40} onClick={slideSecondRight} className={arrowClass} />
-            </div>
-
+            <ManualSlider technologies={techs1} id={1} />
+            <ManualSlider technologies={techs2} id={2} />
+            
             {/* Auto slides */}
-            <div className='relative p-4 mt-2 w-[90%] overflow-hidden hidden xl:block '>
-			    <div className='absolute left-0 top-0 flex items-center h-max w-[200%] animate-infScroll'>
-                    {
-                        [0, 1].map((e) => (
-                            <div key={e} className="flex w-[50%] h-max justify-around items-center">
-                                {
-                                techs1.map((e : TechCard) => (
-                                    <Cards key={e.name} Icon={e.Icon} name={e.name} />
-                                    ))
-                                }
-				            </div>
-                        ))
-                    }
-			    </div>
-                <div className='invisible'>
-                    <Cards key={'heigh'} Icon={SiSolidity} name={'height-helper'} />
-                </div>
-		    </div>
-            <div className='relative p-4 w-[90%] overflow-hidden hidden xl:block '>
-			    <div className='absolute left-0 top-0 flex items-center h-max w-[200%] animate-infScroll'>
-                    {
-                        [0, 1].map((e) => (
-                            <div key={e} className="flex w-[50%] h-max justify-around items-center">
-                                {
-                                techs2.map((e : TechCard) => (
-                                    <Cards key={e.name} Icon={e.Icon} name={e.name} />
-                                    ))
-                                }
-				            </div>
-                        ))
-                    }
-			    </div>
-                <div className='invisible'>
-                    <Cards key={'heigh'} Icon={SiSolidity} name={'height-helper'} />
-                </div>
-		    </div>
+            <AutoSlider technologies={techs1} />
+		    <AutoSlider technologies={techs2} />
+		    
 
             <div className='flex flex-col items-center w-full mt-6'>
 

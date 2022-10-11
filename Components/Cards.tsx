@@ -32,7 +32,7 @@ export default function Card({Icon, name, copy, download} : Props){
     /*   
          */
     return (
-        <div className='w-[200px] h-max flex-none inline-block '>
+        <div className='w-[10rem] h-max flex-none inline-block '>
             <div className='flex flex-col items-center justify-center p-4 m-2
                 rounded-md border border-cyan-700 hover:text-cyan-600'>
                 <Icon size={60} />
