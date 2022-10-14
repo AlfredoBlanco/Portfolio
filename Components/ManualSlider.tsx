@@ -13,7 +13,6 @@ interface Props{
 }
 
 export default function ManualSlider({ technologies, id } : Props){
-    const sliderClass = 'w-full h-max overflow-x-scroll overflow-y-hidden scroll whitespace-nowrap scroll-smooth transition duration-1000 scrollbar-hide';
     const arrowClass = 'hidden xsm:block cursor-pointer';
 
     const slideLeft = () => {
@@ -31,7 +30,8 @@ export default function ManualSlider({ technologies, id } : Props){
     return(
         <div className='relative flex items-center w-full block xl:hidden px-2 transition duration-700'>
             <MdChevronLeft size={40} onClick={slideLeft} className={arrowClass} />
-            <div id={`slide${id}`} className={sliderClass}>
+            <div id={`slide${id}`} className='w-full h-max overflow-x-scroll overflow-y-hidden scroll
+                whitespace-nowrap scroll-smooth transition duration-1000 scrollbar-hide'>
                 {
                     technologies.map((e : TechCard) => (
                         <Cards key={e.name} Icon={e.Icon} name={e.name} />

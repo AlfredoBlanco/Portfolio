@@ -4,10 +4,12 @@ import { CgCloseR } from "react-icons/cg";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 import AutoSlider from "./AutoSlider";
 import ManualSlider from "./ManualSlider";
+import { useEnglish } from '../context/englishContext';
+
 
 interface Project{
-    img ?: string;
-    name?: string;
+    img : string;
+    name : string;
     technologies : any[];
     github ?: string;
     link?: string;
@@ -19,6 +21,7 @@ interface Props{
 }
 
 export default function InfoModal({ project : { name, linkedin, github, link, technologies } } : Props){
+    const { english } = useEnglish();
     const [show, setShow] = useState<boolean>(false);
     const iconClass = 'mt-6 sm:mt-2 transition duration-700 hover:text-transparent hover:rotate-[360deg] hover:scale-125';
 
@@ -31,20 +34,36 @@ export default function InfoModal({ project : { name, linkedin, github, link, te
                 </button>
                 <div className="flex flex-col items-center justify-between min-w-[60%] min-h-[60%]
                     border-2 py-2 mx-2 rounded-lg bg-stone-900 ">
-                    <h1 className="text-xl font-semibold my-2 underline 
+                    <h1 className="text-xl text-center font-semibold my-2 underline 
                         underline-offset-4 decoration-sky-300 decoration-double">
-                        Project { name }
+                        {
+                            english
+                            ? 'Project '
+                            : 'Proyecto '
+                        }
+                        { name }
                     </h1>
                     <div className="relative flex flex-col items-center w-full overflow-hidden">
-                        <h2 className="self-start ml-2">
-                            Technologies used :
+                        <h2 className="self-start text-center ml-2">
+                            {
+                                english
+                                ? 'Technologies used :'
+                                : 'Tecnologías implementadas :'
+                            }
+                            
                         </h2>
                         <AutoSlider technologies={technologies.slice(0,3)} />
                         <AutoSlider technologies={technologies.slice(3)} />
-                        <ManualSlider technologies={technologies} id={3} />
+                        <ManualSlider technologies={technologies} id={2} />
                     </div>
                     <div className="flex flex-col items-center w-full">
-                        <h2 className="text-lg" >Links of interest :</h2>
+                        <h2 className="text-lg text-center" >
+                            {
+                                english
+                                ? 'Links of interest :'
+                                : 'Links de interés :'
+                            }
+                        </h2>
                         <div className="flex items-center justify-evenly w-full pb-4">
                         {
                             github
@@ -77,8 +96,13 @@ export default function InfoModal({ project : { name, linkedin, github, link, te
         )
         : (
             <button className='absolute bottom-3 left-3 border rounded-full bg-zinc-50 
-                bg-opacity-50 p-2 font-semibold transition duration-700 hover:bg-opacity-80 ' onClick={() => setShow(true)}>
-                More info...
+                bg-opacity-50 p-2 font-semibold transition duration-700 hover:bg-opacity-80'
+                onClick={() => setShow(true)}>
+                {
+                    english
+                    ? 'More info...'
+                    : 'Detalles...'
+                }
             </button>
         )
     

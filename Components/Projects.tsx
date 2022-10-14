@@ -1,13 +1,27 @@
 import { useState } from 'react';
 import { FaNodeJs, FaReact } from 'react-icons/fa';
+import { IconType } from 'react-icons/lib';
 import { SiExpress, SiNextdotjs, SiPostgresql, SiRedux, SiSequelize, SiSolidity, SiTypescript } from 'react-icons/si';
 import { useEnglish } from '../context/englishContext';
 import Card from './ProjectCard';
 
+interface TechCard {
+    Icon : IconType,
+    name : string
+}
+
+interface Project{
+    img : string;
+    name : string;
+    technologies : TechCard[];
+    github ?: string;
+    linkedin ?: string;
+    link ?: string;
+}
 
 export default function Projects(){
     const { english } = useEnglish();
-    const [ projects ] = useState<any[]>([
+    const [ projects ] = useState<Project[]>([
         {
             img : 'NFTicket',
             name : 'NFTickects',
@@ -68,8 +82,13 @@ export default function Projects(){
         }
     }
     
+    const handleClick = (newPos : number) => {
+        handleShow();
+        setPos(newPos);
+    }
+
     return (
-        <div className='flex flex-col items-center  
+        <div className='flex flex-col items-center
             min-h-screen w-screen md:w-[90%] bg-slate-200 border-t-2 border-sky-700' id='Projects'>
             <div className='flex items-center justify-center 
                 h-[30vh] w-full bg-zinc-800 text-zinc-50'>
@@ -81,10 +100,23 @@ export default function Projects(){
                     }
                 </h1>
             </div>
-            <div className='flex w-[90%] h-[60vh] justify-between items-center mt-4'>
-                <button onClick={goLeft}>{'<'}</button>
-                <Card project={projects[pos]} show={show} />
-                <button onClick={goRight}>{'>'}</button>
+            <div className='flex flex-col w-[90%] h-[60vh] justify-evenly items-center mt-4'>
+                <div className='flex w-full h-max justify-between items-center'>
+                    <button onClick={goLeft}>{'<'}</button>
+                    <Card project={projects[pos]} show={show} />
+                    <button onClick={goRight}>{'>'}</button>
+                </div>
+                <div className='flex justify-evenly w-full'>
+
+                    {
+                        projects.map((e: Project,i: number) => (
+                            <input key={i} type='button'
+                                className={`h-3 w-6 border-2 border-sky-400 rounded-md
+                                    ${i === pos ? 'bg-sky-400' : ''} cursor-pointer`}
+                                onClick={() => handleClick(i)} />
+                        ))
+                    }
+                </div>
             </div>
 
         </div>

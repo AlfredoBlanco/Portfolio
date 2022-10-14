@@ -60,8 +60,7 @@ export default function Tech(){
             </h1>
 
             {/* Manual slides */}
-            <ManualSlider technologies={techs1} id={1} />
-            <ManualSlider technologies={techs2} id={2} />
+            <ManualSlider technologies={[...techs1, ...techs2]} id={1} />
             
             {/* Auto slides */}
             <AutoSlider technologies={techs1} />

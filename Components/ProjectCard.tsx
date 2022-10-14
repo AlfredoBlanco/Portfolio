@@ -1,8 +1,9 @@
 import Image from 'next/image';
 import Modal from './InfoModal';
+
 interface Project{
-    img ?: string;
-    name?: string;
+    img : string;
+    name : string;
     technologies : any[];
     github ?: string;
     link?: string;
@@ -15,6 +16,7 @@ interface Props{
 }
 
 export default function Card({ project, show} : Props){
+    
     const iconClass = 'mt-6 sm:mt-2 transition duration-700 hover:rotate-[360deg] hover:scale-125';
     return (
         <div className={`relative flex flex-col items-center w-[90%] sm:w-[60%] h-max shadow-xl bg-zinc-50 rounded-lg overflow-hidden
