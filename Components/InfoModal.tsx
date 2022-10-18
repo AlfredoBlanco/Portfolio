@@ -27,7 +27,7 @@ export default function InfoModal({ project : { name, linkedin, github, link, te
 
     return show
         ? (
-            <div className="fixed top-0 left-0 flex items-center justify-center h-screen w-screen
+            <div className="fixed top-0 left-0 z-[100] flex items-center justify-center h-screen w-screen
                 bg-stone-900 bg-opacity-[97%] text-zinc-50">
                 <button className="absolute top-3 left-3 " onClick={() => setShow(false)}>
                     <CgCloseR size={40} />
