@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { FaNodeJs, FaReact } from 'react-icons/fa';
 import { IconType } from 'react-icons/lib';
+import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
+import { FaNodeJs, FaReact } from 'react-icons/fa';
 import { SiExpress, SiNextdotjs, SiPostgresql, SiRedux, SiSequelize, SiSolidity, SiTypescript } from 'react-icons/si';
 import { useEnglish } from '../context/englishContext';
 import Card from './ProjectCard';
@@ -101,10 +102,16 @@ export default function Projects(){
                 </h1>
             </div>
             <div className='flex flex-col w-[90%] h-[60vh] justify-evenly items-center mt-4'>
-                <div className='flex w-full h-max justify-between items-center'>
-                    <button onClick={goLeft}>{'<'}</button>
+                <div className='relative flex w-full h-max justify-center items-center'>
+                    <button className='absolute left-1 transition duration-300 z-[50] active:-translate-x-2
+                        text-sky-300 p-2 rounded-full bg-gray-800 bg-opacity-80 sm:bg-transparent sm:text-[#000]' onClick={goLeft}>
+                        <BsChevronLeft size={30} />
+                    </button>
                     <Card project={projects[pos]} show={show} />
-                    <button onClick={goRight}>{'>'}</button>
+                    <button className='absolute right-1 transition duration-300 z-[50] active:translate-x-2
+                        text-sky-300 p-2 rounded-full bg-gray-800 bg-opacity-80 sm:bg-transparent sm:text-[#000]' onClick={goRight}>
+                        <BsChevronRight size={30} />
+                    </button>
                 </div>
                 <div className='flex justify-evenly w-full'>
 

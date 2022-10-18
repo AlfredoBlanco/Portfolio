@@ -48,7 +48,8 @@ export default function Present(){
                         <p>
                             Soy un desarrollador Argentino, apasionado por aprender cosas nuevas todos los días. <br />
                             El mundo IT es enorme y me gustaría conocerlo todo. <br />
-                            Es por eso que siempre estoy desafiandome a mi mismo.
+                            Es por eso que siempre estoy desafiandome a mi mismo.<br />
+                            <strong>Mas testo Y el boton del CV</strong>
                         </p>
                     )
                 }

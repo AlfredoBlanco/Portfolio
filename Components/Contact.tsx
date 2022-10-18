@@ -5,6 +5,7 @@ import { GiRotaryPhone } from 'react-icons/gi';
 import { AiOutlineLinkedin, AiOutlineMail } from 'react-icons/ai';
 import { FiGithub } from 'react-icons/fi';
 import { IconType } from 'react-icons/lib';
+import MailForm from './MailForm';
 
 interface Contacts{
     Icon: IconType;
@@ -33,21 +34,25 @@ export default function Contact(){
                     }
                 </h1>
             </div>
-            <div className='flex flex-col items-start justify-center mt-4 xsm:w-[60%] text-gray-100' >
-                {
-                    contacts.map((e : Contacts, i : number) => (
-                        e.link
-                        ? (
-                            <a href={e.link} target='_blank' rel="noopener noreferrer">
-                                <Card Icon={e.Icon} name={e.name} link={true} />
-                            </a>
-                        ) : (
+            <div className='flex items-center justify-evenly w-full h-full'>
 
-                            <Card key={i} Icon={e.Icon} name={e.name} copy={e.copy} />
-                        )
-                    ))
-                }
-            
+                <div className='flex flex-col items-start justify-center xsm:w-max text-gray-100' >
+                    {
+                        contacts.map((e : Contacts, i : number) => (
+                            e.link
+                            ? (
+                                <a href={e.link} target='_blank' rel="noopener noreferrer">
+                                    <Card key={i} Icon={e.Icon} name={e.name} link={true} />
+                                </a>
+                            ) : (
+
+                                <Card key={i} Icon={e.Icon} name={e.name} copy={e.copy} />
+                            )
+                        ))
+                    }
+                
+                </div>
+                <MailForm />
             </div>
         </div>
     )
