@@ -45,7 +45,7 @@ export default function Menu(){
                 </div>
             </div>
             <button className={`absolute top-2 left-2 md:hidden text-gray-100 p-1 bg-gray-800 rounded-lg z-[100]
-                transition duration-400 active:${show ? '' : '-'}rotate-45`}
+                transition duration-400 ${show ? 'active:rotate-45' : 'active:-rotate-45'}`}
                 onClick={handleClick}>
                 {
                     show
