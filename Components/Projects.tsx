@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { IconType } from 'react-icons/lib';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import { FaNodeJs, FaReact } from 'react-icons/fa';
-import { SiExpress, SiNextdotjs, SiPostgresql, SiRedux, SiSequelize, SiSolidity, SiTypescript } from 'react-icons/si';
+import { SiExpress, SiNextdotjs, SiPostgresql, SiRedux, SiSequelize, SiSolidity, SiTailwindcss, SiTypescript, SiMaterialui, SiMongodb, SiSocketdotio } from 'react-icons/si';
 import { useEnglish } from '../context/englishContext';
 import Card from './ProjectCard';
 
@@ -51,6 +51,50 @@ export default function Projects(){
             github : 'https://github.com/AlfredoBlanco/PI-Dogs',
             link : 'https://pi-dogs-beryl.vercel.app/',
             linkedin : 'https://www.linkedin.com/feed/update/urn:li:activity:6911770620061958144/'
+        },
+        {
+            img : 'portfolio',
+            name : 'Portfolio',
+            technologies : [
+                { Icon : FaNodeJs, name : 'Node.js' },
+                { Icon : FaReact, name : 'React.js' },
+                { Icon : SiExpress, name : 'Express' },
+                { Icon : SiNextdotjs, name : 'Next.js' },
+                { Icon : SiTypescript, name : 'Typescript' },
+                { Icon : SiTailwindcss, name: 'Tailwind' },
+            ],
+            github : 'https://github.com/AlfredoBlanco/Portfolio',
+            link : 'https://alfredoblanco.vercel.app/',
+        },
+        {
+            img : 'Web-a',
+            name : 'Web-A',
+            technologies : [
+                { Icon : FaReact, name : 'React.js' },
+                { Icon : SiNextdotjs, name : 'Next.js' },
+                { Icon : SiMaterialui, name : 'Material UI' },
+                { Icon : SiTypescript, name : 'Typescript' },
+                { Icon : SiMongodb, name: 'MongoDB' },
+                { Icon : SiSocketdotio, name: 'Socket.io' },
+
+            ],
+            github : 'https://github.com/AlfredoBlanco/SBS/tree/main/web-a',
+            link : 'https://sbs-beta.vercel.app/',
+        },
+        {
+            img : 'Web-b',
+            name : 'Web-B',
+            technologies : [
+                { Icon : FaNodeJs, name : 'Node.js' },
+                { Icon : FaReact, name : 'React.js' },
+                { Icon : SiNextdotjs, name : 'Next.js' },
+                { Icon : SiTypescript, name : 'Typescript' },
+                { Icon : SiMongodb, name: 'MongoDB' },
+                { Icon : SiSequelize, name : 'Sequelize' },
+
+            ],
+            github : 'https://github.com/AlfredoBlanco/SBS/tree/main/web-b',
+            link : 'https://controller-sbs.vercel.app/',
         },
     ])
     const [pos, setPos] = useState<number>(0);
