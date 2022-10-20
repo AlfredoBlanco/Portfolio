@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { AiOutlineConsoleSql } from "react-icons/ai";
+import axios from 'axios';
 import { useEnglish } from "../context/englishContext"
 import ErrorModal from "./ErrorModal";
+import ResultModal from "./ResultModal";
 
 interface Info {
     name: string;
@@ -22,6 +23,10 @@ interface ModalInfo {
     show: boolean;
     err: Err;
 }
+interface ResultInfo {
+    show: boolean;
+    success: boolean;
+}
 
 export default function Form() {
     const { english } = useEnglish();
@@ -36,6 +41,11 @@ export default function Form() {
         show: false,
         err: {},
     });
+    const [sending, setSending] = useState<boolean>(false);
+    const [show, setShow] = useState<ResultInfo>({
+        show: false,
+        success: false,
+    });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
         setInfo({
@@ -44,18 +54,48 @@ export default function Form() {
         })
     }
 
+    const send = async () => {
+        const result = await axios.post('/api/mail',{
+            ...info,
+        }).then(r => r.data.ok);
+
+        setShow({ show: true, success: result});
+        setSending(false);
+        setInfo({
+            name: '',
+            email: '',
+            phone: '',
+            subject: '',
+            body: '',
+        })
+        setTimeout(() => {
+            setShow({ show: false, success: false})
+        }, 4000);
+
+    }
+
     const handleSubmit = (e : React.FormEvent) => {
         e.preventDefault();
+        setSending(true);
         const errors : Err = validate(info);
+
         if(!Object.keys(errors).length){
-            console.log('Envio el mail');
+            send();
         } else {
             setModalInfo({
                 show: true,
                 err: errors,
             })
-            console.log('Seteo el modal');
+            setSending(false);
+            setInfo({
+                name: '',
+                email: '',
+                phone: '',
+                subject: '',
+                body: '',
+            })
         }
+        
     }
 
     const validate = (e : Info) => {
@@ -132,15 +172,19 @@ export default function Form() {
                     placeholder={english ? 'Required' : 'Requerido'}
                     name={'body'} onChange={handleChange} value={info.body} />
                 </div>
-                <button className='p-2 border-2 border-sky-300 rounded-lg transition duration-400 hover:bg-sky-300 hover:text-[#000]' >
+                <div className={`w-12 h-12 border-4 border-gray-300 border-b-gray-50
+                    rounded-full animate-spin ${sending? 'block' : 'hidden'}`} />
+                <button className={`p-2 border-2 border-sky-300 rounded-lg transition duration-400
+                    hover:bg-sky-300 hover:text-[#000] ${sending ? 'hidden' : 'block'}`} >
                     {
                         english
-                        ? 'Send'
-                        : 'Enviar'
+                            ? 'Send'
+                            : 'Enviar'
                     }
                 </button>
             </form>
             <ErrorModal show={modalInfo.show} err={modalInfo.err} setShow={setModalInfo} />
+            <ResultModal show={show.show} success={show.success} />
         </>
     )
 }
