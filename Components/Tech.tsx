@@ -1,30 +1,91 @@
-import styles from '../styles/Home.module.css';
 import { FaNodeJs, FaReact} from 'react-icons/fa';
-import { SiSolidity, SiNextdotjs, SiRedux, SiExpress, SiPostgresql, SiSequelize, SiTypescript} from 'react-icons/si';
+import { SiSolidity, SiNextdotjs, SiRedux, SiExpress, SiPostgresql,
+    SiSequelize, SiTypescript, SiTailwindcss, SiMongodb} from 'react-icons/si';
+import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+import { BsThreeDots } from 'react-icons/bs';
 import Cards from './Cards';
+import AutoSlider from './AutoSlider';
+import { useEnglish } from '../context/englishContext';
+import { useState } from 'react';
+import { IconType } from 'react-icons/lib';
+import ManualSlider from './ManualSlider';
+
+interface TechCard {
+    Icon : IconType,
+    name : string
+}
 
 export default function Tech(){
-    return (
-        <div className={styles.main} id='Tech'>
-            <h1 className={styles.title}>Technologies</h1>
-            <div className={styles.grid}>
-                <Cards Icon={FaNodeJs} name={'Node.js'} />
-                <Cards Icon={FaReact} name={'React.js'} />
-                <Cards Icon={SiNextdotjs} name={'Next.js'} />
-                <Cards Icon={SiSolidity} name={'Solidity'} />
-                <Cards Icon={SiRedux} name={'Redux'} />
-                <Cards Icon={SiExpress} name={'Express'} />
-                <Cards Icon={SiPostgresql} name={'PostgreSQL'} />
-                <Cards Icon={SiSequelize} name={'Sequelize'} />
-                            
-            </div>
+    const { english } = useEnglish();
+    const [ techs1 ] = useState<TechCard[]>([
+        { Icon : FaNodeJs, name : 'Node.js' },
+        { Icon : FaReact, name : 'React.js' },
+        { Icon : SiNextdotjs, name : 'Next.js' },
+        { Icon : SiRedux, name : 'Redux' },
+        { Icon : SiExpress, name : 'Express' },
 
-            <h6 className={styles.description}> 
-                Now learning:
-            </h6>
-            <div className={styles.grid}>
-                <Cards Icon={SiTypescript} name={'Typescript'} />
-                
+    ])
+    const [ techs2 ] = useState<TechCard[]>([
+        { Icon : SiSolidity, name : 'Solidity' },
+        { Icon : SiTailwindcss, name: 'Tailwind' },
+        { Icon : SiPostgresql, name : 'PostgreSQL' },
+        { Icon : SiMongodb, name: 'MongoDB' },
+        { Icon : SiSequelize, name : 'Sequelize' },
+
+    ])
+    const [ learningTechs ] = useState<TechCard[]>([
+        { Icon : SiTypescript, name : 'Typescript' },
+        { Icon : BsThreeDots, name : 'Coming soon' },
+    ])
+    const sliderClass = 'w-full h-max overflow-x-scroll overflow-y-hidden scroll whitespace-nowrap scroll-smooth transition duration-1000 scrollbar-hide';
+    const arrowClass = 'hidden xsm:block cursor-pointer';
+
+    const slideLearningLeft = () => {
+        const slider = document.getElementById('learningSlide');
+        slider ? slider.scrollLeft -= 400 : '';
+    }
+
+    const slideLearningRight = () => {
+        const slider = document.getElementById('learningSlide');
+        slider ? slider.scrollLeft += 400 : '';
+    }
+
+    return (
+        <div className='flex flex-col items-center justify-around min-h-screen w-screen md:w-[90%] 
+            bg-zinc-900 text-zinc-50 border-t-2 border-sky-400' id='Tech'>
+            <h1 className='text-5xl p-4 mt-2 border-y-2 border-sky-400 rounded-lg' >
+                {
+                    english ? 'Technologies' : 'Tecnologías'
+                }
+            </h1>
+
+            <ManualSlider technologies={[...techs1, ...techs2]} id={1} />
+
+            <AutoSlider technologies={techs1} />
+		    <AutoSlider technologies={techs2} />
+		    
+
+            <div className='flex flex-col items-center w-full mt-6'>
+
+                <h2 className='text-xl text-center py-4' >
+                    {
+                        english
+                        ? "As I said before, I'm always learning new things, now I find myself learning:"
+                        : 'Como dije anteriormente, me gusta aprender cosas nuevas, por el momento estoy aprendiendo: '
+                    }
+                    
+                </h2>
+                <div className='flex items-center justify-center w-full xl:w-[60%] px-2 transition duration-700'>
+                <MdChevronLeft size={40} onClick={slideLearningLeft} className={arrowClass} />
+                <div id='learningSlide' className={`${sliderClass} w-max`}>
+                    {
+                        learningTechs.map((e : TechCard) => (
+                            <Cards key={e.name} Icon={e.Icon} name={e.name} />
+                            ))
+                        }
+                </div>
+                <MdChevronRight size={40} onClick={slideLearningRight} className={arrowClass} />
+            </div>
             </div>
                 
             
