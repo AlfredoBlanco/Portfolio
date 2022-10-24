@@ -14,7 +14,7 @@ interface TechCard {
     Icon : IconType,
     name : string
 }
-/* https://www.youtube.com/watch?v=rO4gsHdJJ5k */
+
 export default function Tech(){
     const { english } = useEnglish();
     const [ techs1 ] = useState<TechCard[]>([
@@ -59,10 +59,8 @@ export default function Tech(){
                 }
             </h1>
 
-            {/* Manual slides */}
             <ManualSlider technologies={[...techs1, ...techs2]} id={1} />
-            
-            {/* Auto slides */}
+
             <AutoSlider technologies={techs1} />
 		    <AutoSlider technologies={techs2} />
 		    

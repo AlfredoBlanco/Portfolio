@@ -14,9 +14,9 @@ export default function Present(){
     }, [show]);
 
     return (
-        <div className='flex flex-col items-center justify-between h-screen w-screen md:w-[90%] text-gray-50 bg-zinc-900 ' id='About'>
+        <div className='relative flex flex-col items-center justify-between min-h-screen w-screen md:w-[90%] text-gray-50 bg-zinc-900 ' id='About'>
             
-            <div className='flex flex-col justify-center items-center bg-zinc-700 h-2/5 xs:h-1/3 w-full'>
+            <div className='flex flex-col justify-center items-center bg-zinc-700 h-[40vh] xs:h-[33vh] w-full'>
                 
                 <h1 className='text-5xl font-bold text-center pt-4 xs:pt-4' >
                     {
@@ -34,27 +34,38 @@ export default function Present(){
                 </div>
                 
             </div>
-            <div className='flex justify-center items-center h-3/5 xs:h-2/3 w-full'>
+            <div className='flex justify-center items-center h-3/5 xs:h-[66vh] sm:w-[60%] mb-2 px-1'>
                 {
                     english
                     ? (
-                        <p>
-                            {"I'm"} a passionate Argentinian developer who wants to keep learning new things every day.<br />
-                            This IT word is huge and I want to know most of it.<br/>
-                            Thats why {"I'm"} always looking for challenges and dare myself.
+                        <p className='text-center text-xl font-semibold'>
+                            {"I'm"} 22 years old, when I started programming I was studying industrial engineering, 
+                            it was a before and after in my carreer. 
+                            Since then, {"I'm"} always looking for challenges and dare myself every day to learn 
+                            new things.
+                            I have a lot of energy and enthusiasm to keep growing inside this huge IT world.
                         </p>
                     )
                     : (
-                        <p>
-                            Soy un desarrollador Argentino, apasionado por aprender cosas nuevas todos los días. <br />
-                            El mundo IT es enorme y me gustaría conocerlo todo. <br />
-                            Es por eso que siempre estoy desafiandome a mi mismo.<br />
-                            <strong>Mas testo Y el boton del CV</strong>
+                        <p className='text-center text-xl font-semibold'>
+                            Tengo 22 años, cuando empecé a programar estaba estudiando ingeniería industrial, 
+                            fue un antes y después en mi carrera.
+                            Desde ese momento que busco superarme y desafiarme cada día más para aprender cosas nuevas. 
+                            Tengo mucha energía y entusiasmo por seguir creciendo dentro de este gran mundo de la tecnología.
                         </p>
                     )
                 }
             </div>
-            
+            <a href='/Alfredo_Blanco_CV.pdf' target='_blank' rel="noopener noreferrer">
+                <button className='relative xs:absolute bottom-2 right-2 my-2 p-2 px-4 border-2 rounded-xl
+                    hover:shadow-md hover:shadow-[#fff] hover:border-transparent'>
+                    {
+                        english
+                        ? 'See CV'
+                        : 'Ver CV'
+                    }
+                </button>
+            </a>
         </div>
     )
 }

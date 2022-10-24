@@ -157,7 +157,7 @@ export default function Projects(){
                         <BsChevronRight size={30} />
                     </button>
                 </div>
-                <div className='flex justify-evenly w-full'>
+                <div className='flex justify-center gap-6 w-full'>
 
                     {
                         projects.map((e: Project,i: number) => (
@@ -172,19 +172,4 @@ export default function Projects(){
 
         </div>
     )
-} 
-{/* <div className=''>
-                <Card name='PI-Dogs'
-                    img= {require('../images/piDogs.png')}
-                    url= 'https://pi-dogs-beryl.vercel.app/'
-                    tech={['Node', 'Express', 'React', 'Redux', 'PostgreSQL', 'Sequelize']}
-                    linkedin= 'https://www.linkedin.com/feed/update/urn:li:activity:6911770620061958144/'
-                />
-
-                <Card name='NFTickets'
-                    img= {require('../images/NFTicket.png')}
-                    url= 'https://nftickets.netlify.app/'
-                    tech={['Solidity', 'Web3', 'Next', 'Typescript', 'Prisma', 'Chakra-UI']}
-                    linkedin= 'https://www.linkedin.com/feed/update/urn:li:activity:6925467693730934786/'
-                />  
-    </div> */}
+}

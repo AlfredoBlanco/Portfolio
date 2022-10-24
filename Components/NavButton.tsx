@@ -28,8 +28,10 @@ export default function NavButton({ Icon, url, arg, eng} : Props) {
                     ? eng
                     : arg
                 }
-                <div className='absolute bottom-0 right-[100%] w-full h-[1px] bg-blue-500
-                    transition duration-1000 group-hover:translate-x-full' />
+                {/* <div className='absolute bottom-0 right-[100%] w-full h-[1px] bg-blue-500
+                    transition duration-1000 group-hover:translate-x-full' /> */}
+                <div className='absolute bottom-0 w-full h-[1px] bg-blue-500
+                    transition duration-500 scale-0 group-hover:scale-[100%]' />
             </button>
         </Link>
     )
