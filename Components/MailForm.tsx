@@ -87,13 +87,6 @@ export default function Form() {
                 err: errors,
             })
             setSending(false);
-            setInfo({
-                name: '',
-                email: '',
-                phone: '',
-                subject: '',
-                body: '',
-            })
         }
         
     }
