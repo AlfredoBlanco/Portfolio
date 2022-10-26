@@ -65,6 +65,7 @@ export default function Projects(){
             ],
             github : 'https://github.com/AlfredoBlanco/Portfolio',
             link : 'https://alfredoblanco.vercel.app/',
+            linkedin : 'https://www.linkedin.com/feed/update/urn:li:share:6991100013246353408/'
         },
         {
             img : 'Web-a',
