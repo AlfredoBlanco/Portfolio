@@ -45,12 +45,12 @@ export default function Menu(){
                 </div>
             </div>
             <button className={`absolute top-2 left-2 md:hidden text-gray-100 p-1 bg-gray-800 rounded-lg z-[100]
-                transition duration-400 ${show ? 'active:rotate-45' : 'active:-rotate-45'}`}
+                transition duration-400 group`}
                 onClick={handleClick}>
                 {
                     show
-                    ? <AiOutlineClose size={30} />
-                    : <FiMenu size={30} />
+                    ? <AiOutlineClose size={30} className='group-active:-rotate-[360deg] transition duration-600' />
+                    : <FiMenu size={30} className='group-active:rotate-[360deg] transition duration-600' />
                 }
             </button>
 

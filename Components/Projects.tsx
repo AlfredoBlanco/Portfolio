@@ -83,7 +83,7 @@ export default function Projects(){
         },
         {
             img : 'Web-b',
-            name : 'Web-B',
+            name : 'Web-A backoffice',
             technologies : [
                 { Icon : FaNodeJs, name : 'Node.js' },
                 { Icon : FaReact, name : 'React.js' },
