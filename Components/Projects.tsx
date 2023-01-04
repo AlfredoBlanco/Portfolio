@@ -80,7 +80,6 @@ export default function Projects(){
 
             ],
             github : 'https://github.com/AlfredoBlanco/SBS/tree/main/web-a',
-            link : 'https://sbs-beta.vercel.app/',
         },
         {
             img : 'Web-b',
@@ -95,7 +94,6 @@ export default function Projects(){
 
             ],
             github : 'https://github.com/AlfredoBlanco/SBS/tree/main/web-b',
-            link : 'https://controller-sbs.vercel.app/',
         },
     ])
     const [pos, setPos] = useState<number>(0);
