@@ -95,7 +95,7 @@ export default function InfoModal({ project : { name, linkedin, github, link, te
             </div>
         )
         : (
-            <button className='absolute bottom-3 left-3 border rounded-full bg-zinc-50 
+            <button className='absolute bottom-3 left-[7%] sm:left-[22%] border rounded-full bg-zinc-50 
                 bg-opacity-50 p-2 font-semibold transition duration-700 hover:bg-opacity-80'
                 onClick={() => setShow(true)}>
                 {
