@@ -14,6 +14,8 @@ interface TechCard {
 interface Project{
     img : string;
     name : string;
+    description?: string;
+    english?: string;
     technologies : TechCard[];
     github ?: string;
     linkedin ?: string;
@@ -26,6 +28,8 @@ export default function Projects(){
         {
             img : 'NFTicket',
             name : 'NFTickects',
+            description: 'Se trata de una plataforma de venta de tickets para eventos pero con la particularidad de que cada ticket es un NFT, y toda la aplicación esta hecha en Web3, y con la seguridad de la blockchain',
+            english: `It's about a ticket sales platform for events but with the particularity that each ticket is an NFT, the hole page is made with Web3 technology, and with the safety of the blockchain`,
             technologies : [
                 { Icon : FaNodeJs, name : 'Node.js' },
                 { Icon : FaReact, name : 'React.js' },
@@ -69,7 +73,9 @@ export default function Projects(){
         },
         {
             img : 'Web-a',
-            name : 'Web-A',
+            name : 'E-commerce',
+            description: 'Es una pequeña e-commerce con mercadopago integrado, en la cual vas a poder registrarte y agregar elementos a tu carrito de compras. Tiene la particularidad que los cambios del backoffice se ven reflejados en tiempo real',
+            english: `It's a small e-commerce with 'mercadopago' integrated, in which you can registrate and add products to your shopping cart. It has the particularity that all the changes made in the backoffice are reflected in real time`,
             technologies : [
                 { Icon : FaReact, name : 'React.js' },
                 { Icon : SiNextdotjs, name : 'Next.js' },
@@ -80,10 +86,13 @@ export default function Projects(){
 
             ],
             github : 'https://github.com/AlfredoBlanco/SBS/tree/main/web-a',
+            link: 'https://sbs-beta.vercel.app/',
         },
         {
             img : 'Web-b',
-            name : 'Web-A backoffice',
+            name : 'Backoffice',
+            description: 'Es el panel de administración de la e-commerce, el cual solo se podrá acceder siendo administrador y realizar las actualizaciones a la información',
+            english: `It's the e-commerce panel, which you can only access if you are an admin to do the updates`,
             technologies : [
                 { Icon : FaNodeJs, name : 'Node.js' },
                 { Icon : FaReact, name : 'React.js' },
@@ -94,6 +103,8 @@ export default function Projects(){
 
             ],
             github : 'https://github.com/AlfredoBlanco/SBS/tree/main/web-b',
+            link: 'https://controller-sbs.vercel.app/',
+
         },
     ])
     const [pos, setPos] = useState<number>(0);
@@ -116,6 +127,7 @@ export default function Projects(){
         }
         
     }
+
     const goLeft = () => {
         handleShow();
         if(pos === 0){
