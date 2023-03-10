@@ -13,8 +13,12 @@ module.exports = {
       },
       keyframes: {
         marquee : {
-          '0%' : { left: '0' },
-          '100%' : { left: '-100%' }
+          '0%' : { left: '-100%' },
+          '100%' : { left: '0' }
+        },
+        vertMarquee : {
+          '0%' : { top: '-100%' },
+          '100%' : { top: '0' }
         },
         appear : {
           '0%' : { opacity : '0' },
@@ -22,7 +26,8 @@ module.exports = {
         }
       },
       animation: {
-        infScroll : 'marquee 20s linear infinite',
+        infScroll : 'marquee 10s linear infinite',
+        infVertScroll : 'vertMarquee 5s linear infinite',
         appear : 'appear 2s'
       }
     },

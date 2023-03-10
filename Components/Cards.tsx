@@ -9,7 +9,7 @@ interface Props{
 export default function Card({Icon, name } : Props){
 
     return (
-        <div className='relative w-[10rem] h-max flex-none inline-block hover:scale-105'>
+        <div className='relative w-max h-max flex-none inline-block hover:scale-105'>
             <div className='flex flex-col items-center justify-center p-4 m-2
                 rounded-md border border-cyan-700 hover:text-cyan-600'>
 
