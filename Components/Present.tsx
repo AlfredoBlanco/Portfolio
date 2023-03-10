@@ -56,7 +56,7 @@ export default function Present(){
                     )
                 }
             </div>
-            <a href='/Alfredo_Blanco_CV.pdf' target='_blank' rel="noopener noreferrer">
+            <a href={english? '/cv/Alfredo_Blanco_CV(E).pdf' : '/cv/Alfredo_Blanco_CV.pdf'} target='_blank' rel="noopener noreferrer">
                 <button className='relative xs:absolute bottom-2 right-2 my-2 p-2 px-4 border-2 rounded-xl
                     hover:shadow-md hover:shadow-[#fff] hover:border-transparent'>
                     {
